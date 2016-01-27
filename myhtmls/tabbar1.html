@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>首页第一个tabbar页面</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../css/app.css"/>
+	</head>
+	<body>
+		<div class="mui-content">
+		<div id="tabbar" class="mui-control-content mui-active">
+				<div class="mui-content">
+			<div class="mui-card">
+				<div id="slider" class="mui-slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img src="../images/yuantiao.jpg">
+							</a>
+						</div>
+						<!-- 第一张 -->
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/shuijiao.jpg">
+							</a>
+						</div>
+						<!-- 第二张 -->
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/muwu.jpg">
+							</a>
+						</div>
+						<!-- 第三张 -->
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/cbd.jpg">
+							</a>
+						</div>
+						<!-- 第四张 -->
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/yuantiao.jpg">
+							</a>
+						</div>
+						<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img src="../images/shuijiao.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="mui-slider-indicator">
+						<div class="mui-indicator mui-active"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+			</div>
+			</div>
+		<script src="../js/mui.min.js"></script>
+	<script src="../js/castapp.js"></script>
+	<script>
+		mui.init({
+//			swipeBack:true //启用右滑关闭功能
+		});
+		castapp.init(true,'cn.petsknow.client');
+//		url:'http://api.petknow.cn/pets_know_api/base/open/indexs',
+		castapp.ajax({ 
+		    url:'http://api.petknow.cn/pets_know_api/base/open/indexs',
+		    type:'get',
+		    data:{ },
+		    succFn:function(data){
+//		        alert(data);
+		    },
+		    errFn:function(data){
+//		    	console.log(data.toLocaleString());
+//		    	alert(data);
+		    }
+		});// .setRequestHeader("Access-Control-Allow-Origin","*")
+		 
+		castapp.pictureScroll({
+		    callback:function(pictureNumber){
+//		        console.log(pictureNumber);
+		    },
+		    isAutoScroll:true,
+		    scrollTime:3
+		});
+	</script>
+	
+	</body>
+	
+</html>

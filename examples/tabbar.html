@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../css/app.css"/>
+		<style>
+			
+			.title{
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+			}
+	
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			.oa-contact-content {
+				width: 100%;
+			}
+			.oa-contact-name {
+				margin-right: 20px;
+			}
+			.oa-contact-name, oa-contact-position {
+				float: left;
+			}
+		</style>
+		
+	<script type="text/javascript" language="javascript">
+		function addEl(info){
+		   //找到要添加节点的父节点(table)
+		   var tb = document.getElementById("tb");
+		   //创建tbody节点，表格中必须有tbody才能添加，直接添加tr不成功
+		   var tbody = document.createElement("tbody");
+		   //创建tr节点
+		   var tr = document.createElement("tr");
+		   //创建td节点
+		   var td = document.createElement("td");
+		
+		   //添加一个文本节点，设置id和type属性
+		   var newTp = document.createElement("textarea");
+		   newTp.id = info.id;
+		   newTp.cols = 40;
+		   newTp.rows = 4;
+		   newTp.disabled='disabled';
+//		   newTp.style='height:expression((this.scrollHeight>150)?'150px':(this.scrollHeight+5)+'px');overflow:auto;';
+//		   newTp.onpropertychange='this.style.posHeight=this.scrollHeight';
+		   var desc = info.description.length > 19 ? info.description.substr(0,18) + '...' : info.description;
+		   var adv = info.advice.length > 37 ? info.advice.substr(0,37) + '...' : info.advice;
+		   newTp.value = desc + '\n' + info.doctorName + '\n' + adv;
+		
+		   //把节点添加到td当中
+		   td.appendChild(newTp);
+		
+		   //把td添加到tr中
+		   tr.appendChild(td);
+		
+		   //把tr添加到td中
+		   tbody.appendChild(tr);
+		
+		   //把td添加到table中
+		   tb.appendChild(tbody);
+		}
+	</script>
+		
+	</head>
+
+	<body>
+		<header hidden="hidden" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">选项卡（Tab）-div模式</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-chat">
+				<span class="mui-icon mui-icon-email"><span class="mui-badge">9</span></span>
+				<span class="mui-tab-label">消息</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-contact">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">通讯录</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-map">
+				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-tab-label">设置</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div>
+				<frame name="bannerwindow" id="bannerwindow" />
+			</div>
+			<div id="tabbar" class="mui-control-content mui-active">
+				<div class="mui-content">
+			<div class="mui-card">
+				<div id="slider" class="mui-slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#" open-type="common" class="a-label-roll" target="bannerwindow">
+								<img class="image-roll">
+							</a>
+						</div>
+						<!-- 第一张 -->
+						<div class="mui-slider-item">
+							<a href="#" open-type="common" class="a-label-roll" target="bannerwindow">
+								<img class="image-roll">
+							</a>
+						</div>
+						<!-- 第二张 -->
+						<div class="mui-slider-item">
+							<a href="#" open-type="common" class="a-label-roll" target="bannerwindow">
+								<img class="image-roll">
+							</a>
+						</div>
+						<!-- 第三张 -->
+						<div class="mui-slider-item">
+							<a href="#" open-type="common" class="a-label-roll" target="bannerwindow">
+								<img class="image-roll">
+							</a>
+						</div>
+						<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) src="../images/muwu.jpg" -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#" open-type="common" class="a-label-roll" target="bannerwindow">
+								<img class="image-roll">
+							</a>
+						</div>
+					</div>
+					<div class="mui-slider-indicator">
+						<div class="mui-indicator mui-active"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+					</div>
+				</div>
+			</div>
+			<div class="horizontal-div">
+				<img class="img-main-left" src="../images/btn_search.png" alt="姿势库" />
+				<img class="img-main-right" src="../images/btn_pro.png" alt="专家问诊" />
+			</div>
+			<div align="center">
+				<label><font class="theme-text-font">热门问诊</font></label>
+			</div>
+			<table width="100%" height="10px" background=""></table>
+			<div id="inquiry-list">
+			</div>
+			<!-- ===================== 问诊列表 ===================== -->
+			<table id="tb"></table>
+			<table width="100%" height="70px" background=""></table>
+		</div>
+		</div>
+			<button id="open" hidden="hidden">打开网页</button>
+			<div id="tabbar-with-chat" class="mui-control-content">
+				<div class="title">这是div模式选项卡中的第2个子页面，该页面展示一个消息列表</div>
+				
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 1</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 2</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 3</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 4</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 5</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 6</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 7</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 8</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 9</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 10</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 11</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 12</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 13</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 14</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 15</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 16</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 17</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 18</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 19</a></li>
+					<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 20</a></li>
+				</ul>
+				
+			</div>
+			<div id="tabbar-with-contact" class="mui-control-content">
+				<div class="title">这是div模式选项卡中的第3个子页面，该页面展示一个通讯录示例.</div>
+				<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-cell">
+						<div class="oa-contact-cell mui-table">
+							<div class="oa-contact-avatar mui-table-cell">
+								<img src="../images/60x60.gif" />
+							</div>
+							<div class="oa-contact-content mui-table-cell">
+								<div class="mui-clearfix">
+									<h4 class="oa-contact-name">叶文洁</h4>
+									<span class="oa-contact-position mui-h6">董事长</span>
+								</div>
+								<p class="oa-contact-email mui-h6">
+									yewenjie@sina.com
+								</p>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-cell">
+						<div class="oa-contact-cell mui-table">
+							<div class="oa-contact-avatar mui-table-cell">
+								<img src="../images/60x60.gif" />
+							</div>
+							<div class="oa-contact-content mui-table-cell">
+								<div class="mui-clearfix">
+									<h4 class="oa-contact-name">艾AA</h4>
+									<span class="oa-contact-position mui-h6">总经理</span>
+								</div>
+								<p class="oa-contact-email mui-h6">
+									aaa@163.com
+								</p>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-cell">
+						<div class="oa-contact-cell mui-table">
+							<div class="oa-contact-avatar mui-table-cell">
+								<img src="../images/60x60.gif" />
+							</div>
+							<div class="oa-contact-content mui-table-cell">
+								<div class="mui-clearfix">
+									<h4 class="oa-contact-name">罗辑</h4>
+									<span class="oa-contact-position mui-h6">员工</span>
+								</div>
+								<p class="oa-contact-email mui-h6">
+									luoji@126.com
+								</p>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-cell">
+						<div class="oa-contact-cell mui-table">
+							<div class="oa-contact-avatar mui-table-cell">
+								<img src="../images/60x60.gif" />
+							</div>
+							<div class="oa-contact-content mui-table-cell">
+								<div class="mui-clearfix">
+									<h4 class="oa-contact-name">云天明</h4>
+									<span class="oa-contact-position mui-h6">员工</span>
+								</div>
+								<p class="oa-contact-email mui-h6">
+									ytm@163.com
+								</p>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-cell">
+						<div class="oa-contact-cell mui-table">
+							<div class="oa-contact-avatar mui-table-cell">
+								<img src="../images/60x60.gif" />
+							</div>
+							<div class="oa-contact-content mui-table-cell">
+								<div class="mui-clearfix">
+									<h4 class="oa-contact-name">史强</h4>
+									<span class="oa-contact-position mui-h6">员工</span>
+								</div>
+								<p class="oa-contact-email mui-h6">
+									shiqiang@gmail.com
+								</p>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			</div>
+			<div id="tabbar-with-map" class="mui-control-content">
+				<div class="title">这是div模式选项卡中的第4个子页面，该页面展示一个常见的设置示例.</div>
+				<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						新消息通知
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						隐私
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						通用
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view" style="margin-top: 25px;">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						关于mui
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view" style="margin-top: 25px;">
+				<li class="mui-table-view-cell">
+					<a style="text-align: center;color: #FF3B30;">
+						退出登录
+					</a>
+				</li>
+			</ul>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+	<script src="../js/castapp.js"></script>
+	<script>
+		var bannerVos = [];
+		var bannerUrls = [];// 轮播图地址集合
+		var diagnosisInfo = [];// 热门问诊信息集合
+		var divEle;
+		var itemEle;
+		mui.init({
+//			swipeBack:true //启用右滑关闭功能
+		});
+		castapp.init(true,'cn.petsknow.client');
+		castapp.ajax({ 
+		    url:'http://api.petknow.cn/pets_know_api/base/open/indexs',
+		    type:'get',
+		    data:{ },
+		    succFn:function(data){
+		        initData(data);
+		    },
+		    errFn:function(data){
+		    	mui.toast('请检查网络后重试！');
+		    }
+		});
+		 
+		var open = castapp.id('open');
+		castapp.click(open,function(){
+			castapp.openUrl('http://www.castapp.cn');
+		})
+		
+		var alabels = castapp.className('a-label-roll');// 轮播图集合
+		var imgs = castapp.className('image-roll');// 轮播图集合
+		
+		castapp.pictureScroll({
+		    callback:function(pictureNumber){
+		    	// 每次轮播的操作
+		    },
+		    isAutoScroll:true,
+		    scrollTime:3
+		});
+		// 请求到banner数据后初始化banner图和点击事件
+		function initData(data){
+			var value1 = eval('(' + data + ')');
+			bannerVos = value1.data[0].bannerVos;
+			diagnosisInfo = value1.data[0].diagnosisInfo;
+			for(var a = 0;a < bannerVos.length;a++){
+				var banner = bannerVos[a].bannerUrl;
+			    bannerUrls.push(banner);
+//			    alabels[pictureNumber].href= bannerVos[pictureNumber].imageUrl;
+			}
+			for(var i = 0;i < imgs.length;i++){
+				// 遍历轮播图（包括重复的两个）
+				index = i - 1;
+				if(i == 0){
+					index = imgs.length - 3;
+				}else if(i == imgs.length - 1){
+					index = 0;
+				}else {
+					index = i - 1;
+				}
+				imgs[i].src = bannerVos[index].imageUrl;
+				alabels[i].href = bannerUrls[index];
+			}
+			initInquiryList();
+		}
+		
+		var bannerwindow = castapp.id('bannerwindow');
+		castapp.gesture(bannerwindow,'doubletap',function(){
+			mui.toast('bannerwindow doubletap');
+		});
+		
+		// 初始化热门问诊信息
+		function initInquiryList(){
+//			divEle = castapp.id('inquiry-list');
+//			itemEle = castapp.id('inquiry-item');
+			var len = diagnosisInfo.length;
+			mui.toast('initInquiryList len ' + len);
+			for(var j = 0;j < len;j++){
+				addEl(diagnosisInfo[j]);
+//				createAndAddDiv(j);
+			}
+		}
+		
+		function createAndAddDiv(i){
+			var info = diagnosisInfo[i];
+			var newEle = castapp.create('div');
+			var labelname = castapp.create('label');
+			labelname.setAttribute('caption',info.doctorName);
+			var labeldesc = castapp.create('label');
+			labeldesc.setAttribute('caption',info.description);
+			var labeladv = castapp.create('label');
+			labeladv.setAttribute('caption',info.advice);
+			newEle.appendChild(labelname);
+			newEle.appendChild(labeldesc);
+			newEle.appendChild(labeladv);
+			divEle.appendChild(newEle);
+		}
+	</script>
+	</body> 
+	
+</html>
+
+
