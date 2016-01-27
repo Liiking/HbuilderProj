@@ -56,7 +56,6 @@
 		   var tr = document.createElement("tr");
 		   //创建td节点
 		   var td = document.createElement("td");
-		
 		   //添加一个文本节点，设置id和type属性
 		   var newTp = document.createElement("textarea");
 		   newTp.id = info.id;
@@ -68,16 +67,12 @@
 		   var desc = info.description.length > 19 ? info.description.substr(0,18) + '...' : info.description;
 		   var adv = info.advice.length > 37 ? info.advice.substr(0,37) + '...' : info.advice;
 		   newTp.value = desc + '\n' + info.doctorName + '\n' + adv;
-		
 		   //把节点添加到td当中
 		   td.appendChild(newTp);
-		
 		   //把td添加到tr中
 		   tr.appendChild(td);
-		
 		   //把tr添加到td中
 		   tbody.appendChild(tr);
-		
 		   //把td添加到table中
 		   tb.appendChild(tbody);
 		}
@@ -155,9 +150,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="horizontal-div">
-				<img class="img-main-left" src="../images/btn_search.png" alt="姿势库" />
-				<img class="img-main-right" src="../images/btn_pro.png" alt="专家问诊" />
+			<div class="horizontal-div"> 
+				<img id="img-zishiku" onclick="imgclick(1)" class="img-main-left" src="../images/btn_search.png" alt="姿势库" />
+				<img id="img-zhuanjiawenzhen" onclick="imgclick(2)" class="img-main-right" src="../images/btn_pro.png" alt="专家问诊" />
 			</div>
 			<div align="center">
 				<label><font class="theme-text-font">热门问诊</font></label>
@@ -423,6 +418,23 @@
 			newEle.appendChild(labeldesc);
 			newEle.appendChild(labeladv);
 			divEle.appendChild(newEle);
+		}
+		
+		var imgzsk = castapp.id('img-zishiku');
+		var imgzjwz = castapp.id('img-zhuanjiawenzhen');
+//		castapp.click(imgzsk,function(){
+//			mui.toast('姿势库');
+//		});
+//		castapp.click(imgzjwz,function(){
+//			mui.toast('专家问诊');
+//		});
+		function imgclick(v){
+			if(v == 1){
+				mui.toast('姿势库');
+			}
+			if(v == 2){
+				mui.toast('专家问诊');
+			}
 		}
 	</script>
 	</body> 
