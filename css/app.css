@@ -19,7 +19,20 @@
 }
 
 .horizontal-div {
-	display: table-cell;
+	/*display: table-cell;*/
+	float: left;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.virtical-div {
+	width: 100%;
+	text-align: left;
+	padding-top: 10px;
+}
+
+.horizontal-div-img {
+	/*display: table-cell;*/
 	text-align: center;
 	padding-top: 10px;
 }
@@ -46,6 +59,38 @@
 	margin-top: 10px;
 }
 
+.img-doctor-head {
+	float: left;
+	width: 80px;
+	height: 80px;
+	padding: 10px;
+}
+
+.img-inqury-icon {
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
 
 
+.cssshadow {
+	width: 70px;
+	height: 70px;
+    -moz-box-shadow: 1px 1px 20px 4px #afafaf;
+    -webkit-box-shadow:1px 1px 20px 4px #afafaf;
+    box-shadow:1px 1px 20px 4px #afafaf;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#afafaf')";
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#afafaf');
+	position:absolute;
+	z-index:10;
+	color:black;
+	display:none;
+	border:solid 5px #B93539;
+	-moz-border-radius:12px;
+	-webkit-border-radius:12px;
+	border-radius:12px;
+	background:#FFFFFF;
+}
 

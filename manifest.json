@@ -212,7 +212,8 @@
 					"js/castapp.js"
 				],
 				"refer": [
-					"index-menu.html"
+					"index-menu.html",
+					"myhtmls/zishiku.html"
 				],
 				"priority": 0
 			},
@@ -231,7 +232,8 @@
 					"images/shuijiao.jpg",
 					"images/yuantiao.jpg",
 					"images/btn_pro.png",
-					"images/btn_search.png"
+					"images/btn_search.png",
+					"images/icon_bubble.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -246,7 +248,17 @@
 			},
 			"examples/pullrefresh_main.html": {
 				"resources": [
-					"examples/pullrefresh_sub.html"
+					"examples/pullrefresh_sub.html",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"myhtmls/zishiku.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/myfunc.js"
 				],
 				"refer": [],
 				"priority": 0

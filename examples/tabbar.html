@@ -47,34 +47,49 @@
 		</style>
 		
 	<script type="text/javascript" language="javascript">
-		function addEl(info){
-		   //找到要添加节点的父节点(table)
-		   var tb = document.getElementById("tb");
-		   //创建tbody节点，表格中必须有tbody才能添加，直接添加tr不成功
-		   var tbody = document.createElement("tbody");
-		   //创建tr节点
-		   var tr = document.createElement("tr");
-		   //创建td节点
-		   var td = document.createElement("td");
-		   //添加一个文本节点，设置id和type属性
-		   var newTp = document.createElement("textarea");
-		   newTp.id = info.id;
-		   newTp.cols = 40;
-		   newTp.rows = 4;
-		   newTp.disabled='disabled';
-//		   newTp.style='height:expression((this.scrollHeight>150)?'150px':(this.scrollHeight+5)+'px');overflow:auto;';
-//		   newTp.onpropertychange='this.style.posHeight=this.scrollHeight';
-		   var desc = info.description.length > 19 ? info.description.substr(0,18) + '...' : info.description;
-		   var adv = info.advice.length > 37 ? info.advice.substr(0,37) + '...' : info.advice;
-		   newTp.value = desc + '\n' + info.doctorName + '\n' + adv;
-		   //把节点添加到td当中
-		   td.appendChild(newTp);
-		   //把td添加到tr中
-		   tr.appendChild(td);
-		   //把tr添加到td中
-		   tbody.appendChild(tr);
-		   //把td添加到table中
-		   tb.appendChild(tbody);
+		function addEl(info){ 
+		   var qiniu = 'http://7xk4ye.com2.z0.glb.qiniucdn.com/';
+		   // 找到要添加节点的父节点
+		   var ullist = document.getElementById("ullist");
+		   var liitem = document.createElement("li");
+		   var div1 = document.createElement("div");// 第一行横向div，包括一个图片和一个描述
+		   div1.setAttribute('class','horizontal-div');
+		   var div2 = document.createElement("div");// 第二行横向div，包括一个图片和一个纵向div
+		   div2.setAttribute('class','horizontal-div');
+		   var div3 = document.createElement("div");// 第三个纵向div，包括一个横向div和一个建议文字
+		   var div4 = document.createElement("div");// 第三个纵向div，包括一个横向div和一个建议文字
+		   var div5 = document.createElement("div");// 第三个纵向div，包括一个横向div和一个建议文字
+		   div3.setAttribute('class','virtical-div');
+		   var img1 = document.createElement('img');// 问诊小图标
+		   img1.src='../images/icon_bubble.png';
+		   img1.setAttribute('class','img-inqury-icon');
+		   var maxlen1 = 17;//screen.width / labname.style.fontSize;
+			var des = info.description.length > maxlen1 ? info.description.substring(0,maxlen1) + '...' : info.description;
+		   var labdesc = document.createTextNode(des);// 病情描述
+		   div1.appendChild(img1);
+		   div1.appendChild(labdesc);
+		   
+		   var labname = document.createTextNode(info.doctorName);// 医生名字
+		   var maxlen = 31;//screen.width / labname.style.fontSize;
+			var adv = info.advice.length > maxlen ? info.advice.substring(0,maxlen) + '...' : info.advice;
+		   var labadv = document.createTextNode(adv);// 建议信息
+		   div4.appendChild(labname);
+		   div5.appendChild(labadv);
+		   div3.appendChild(div4);
+		   div3.appendChild(div5);
+		   
+		   var imgheader = document.createElement('img');// 医生头像
+		   imgheader.src = qiniu + info.petsAvatorAddress;
+		   imgheader.setAttribute('class','img-doctor-head');// cssshadow 
+		   div2.appendChild(imgheader);
+		   div2.appendChild(div3);
+		   
+		   // 把节点添加到li当中
+		   liitem.appendChild(div1);
+		   liitem.appendChild(div2);
+		   liitem.id = info.id;
+		   // 把li添加到ul中
+		   ullist.appendChild(liitem);
 		}
 	</script>
 		
@@ -150,10 +165,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="horizontal-div"> 
-				<img id="img-zishiku" onclick="imgclick(1)" class="img-main-left" src="../images/btn_search.png" alt="姿势库" />
-				<img id="img-zhuanjiawenzhen" onclick="imgclick(2)" class="img-main-right" src="../images/btn_pro.png" alt="专家问诊" />
-			</div>
+			<div class=""> 
+				<a open-type="common" href="../myhtmls/zishiku.html?index=1"><img id="imgzishiku" class="img-main-left" src="../images/btn_search.png" alt="姿势库" />
+				</a><a open-type="common" href="../myhtmls/zishiku.html?index=2"><img id="imgzhuanjiawenzhen" onclick="imgclick(2)" class="img-main-right" src="../images/btn_pro.png" alt="专家问诊" />
+			</a></div>
 			<div align="center">
 				<label><font class="theme-text-font">热门问诊</font></label>
 			</div>
@@ -161,8 +176,11 @@
 			<div id="inquiry-list">
 			</div>
 			<!-- ===================== 问诊列表 ===================== -->
-			<table id="tb"></table>
-			<table width="100%" height="70px" background=""></table>
+			<!--<table id="tb"></table>-->
+			<div>
+			<ul id="ullist" class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+			</div>
+			<table width="100%" height="70px" background="../images/logo.png"></table>
 		</div>
 		</div>
 			<button id="open" hidden="hidden">打开网页</button>
@@ -420,22 +438,50 @@
 			divEle.appendChild(newEle);
 		}
 		
-		var imgzsk = castapp.id('img-zishiku');
-		var imgzjwz = castapp.id('img-zhuanjiawenzhen');
-//		castapp.click(imgzsk,function(){
-//			mui.toast('姿势库');
-//		});
-//		castapp.click(imgzjwz,function(){
-//			mui.toast('专家问诊');
-//		});
-		function imgclick(v){
-			if(v == 1){
-				mui.toast('姿势库');
-			}
-			if(v == 2){
-				mui.toast('专家问诊');
-			}
-		}
+		var imgzsk = castapp.id('imgzishiku');
+		var imgzjwz = castapp.id('imgzhuanjiawenzhen');
+		
+		castapp.click(imgzjwz,function(){
+			mui.toast('专家问诊');
+		});
+		
+		// 给当前a标签添加点击事件
+		mui('.horizontal-div-img').on('tap', 'a', function() {
+				var id = this.getAttribute("href");
+				var type = this.getAttribute("open-type");
+				var href = this.href;
+				if(type=="common"||(mui.os.ios&&!~id.indexOf('tab-with-viewpagerindicator.html')) ){
+					var webview_style = {
+						popGesture: "close"
+					};
+					mui.openWindow({
+						id: id,
+						url: href,
+						styles: webview_style,
+						show: {
+							aniShow: aniShow
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+				}else{
+					var href = this.href;
+					var title = this.innerText;
+					template = plus.webview.getWebviewById("default-main");
+					//获得共用子webview
+					subWebview = template.children()[0];
+					
+					//通知模板修改标题，并显示隐藏右上角图标；
+					mui.fire(template,'updateHeader',{title:title,showMenu:false});
+					if (subWebview.getURL() != href) {
+						subWebview.loadURL(href);
+					} else {
+						 subWebview.show();
+					}
+					template.show('slide-in-right', 150);
+				}
+			});
 	</script>
 	</body> 
 	
